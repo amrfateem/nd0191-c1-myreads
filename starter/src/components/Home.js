@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import BookStore from "./BookStore";
 
+import PropTypes from "prop-types";
+
+
 const HomeView = ({ books, update }) => {
   return (
     <div className='list-books'>
@@ -33,6 +36,11 @@ const HomeView = ({ books, update }) => {
       </Link>
     </div>
   );
+};
+
+HomeView.propTypes = {
+  books: PropTypes.array.isRequired,
+  update: PropTypes.func.isRequired,
 };
 
 

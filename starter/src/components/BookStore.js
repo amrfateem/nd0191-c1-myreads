@@ -1,6 +1,9 @@
 import React from "react";
 import Book from "./Book";
 
+import PropTypes from "prop-types";
+
+
 const BookStore = ({ books, locationName, location, update }) => {
   return (
     <div className="bookshelf">
@@ -16,6 +19,13 @@ const BookStore = ({ books, locationName, location, update }) => {
       </div>
     </div>
   );
+};
+
+BookStore.propTypes = {
+  books: PropTypes.array.isRequired,
+  locationName: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  update: PropTypes.func.isRequired,
 };
 
 export default BookStore;

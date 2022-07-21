@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import * as BooksAPI from "./BooksAPI";
+import PageNotFound from "./components/Page404";
 
 import Search from "./components/Search";
 import Home from "./components/Home";
@@ -15,7 +16,7 @@ function App() {
     setBooks(data);
   };
 
-  // To get books on start
+  // To get books on start rather then firing randomly
   useEffect(() => {
     getBooks();
   }, []);
@@ -31,6 +32,7 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Routes>
+        <Route exact path="*" element={<PageNotFound />} />
           <Route
             exact
             path="/"

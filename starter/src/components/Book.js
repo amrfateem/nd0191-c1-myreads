@@ -1,7 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Book = ({ location, book, update }) => {
+  
   let BookImage = book.imageLinks ? book.imageLinks.thumbnail : "";
+  
   const changeLocation = (e) => {
     const newShelf = e.target.value;
 
@@ -28,14 +31,20 @@ const Book = ({ location, book, update }) => {
             <option value="currentlyReading"> Currently Reading </option>
             <option value="wantToRead"> Want to Read </option>
             <option value="read"> Read </option>
-            <option value="none"> Remove </option>
+            <option value="none"> None </option>
           </select>
         </div>
       </div>
       <div className="book-title"> {book.title} </div>
-      <div className="book-authors"> {book.authors} </div>
+      <div className="book-authors"> {book.authors && book.authors.join(', ')} </div>
     </div>
   );
+};
+
+Book.propTypes = {
+  location: PropTypes.string.isRequired,
+  book: PropTypes.object.isRequired,
+  update: PropTypes.func.isRequired,
 };
 
 export default Book;
